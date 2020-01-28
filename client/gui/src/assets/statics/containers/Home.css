@@ -1,0 +1,23 @@
+.Home__body_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  background: white;
+}
+
+.Home_wrp {
+  width: 100vw;
+  position: absolute;
+  top: 13vh;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.not_scrollable {
+  overflow-y: hidden;
+}
+
+.scrollable {
+  overflow-y: auto;
+}

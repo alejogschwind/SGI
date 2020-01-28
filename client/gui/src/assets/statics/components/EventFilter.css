@@ -1,0 +1,19 @@
+.EventFilter__wrapper {
+  width: 100%;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border: 1px solid #f0f0f0;
+
+}
+.EventFilter__title {
+  margin: 0;
+  font-size: 32px;
+  padding: 40px 0;
+  color: #1890ff;
+}
+.EventFilter__menu_item {
+  font-size: 18px;
+}

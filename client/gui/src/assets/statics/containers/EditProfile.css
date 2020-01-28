@@ -1,0 +1,58 @@
+.EditProfile__left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EditProfile__right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.avatar-uploader{
+  width: 200px;
+  height: 200px;
+  margin-bottom:  50px;
+}
+
+.ant-form,
+.DisplayData__wrapper {
+  width: 90%;
+}
+
+.page-wrapper {
+  width: 80vw;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.right-col {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 66%;
+}
+
+.progress_bar {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+/* .ant-form {
+  width: 100%;
+  align-self: flex-start;
+} */

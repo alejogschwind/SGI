@@ -1,0 +1,20 @@
+@media only screen and (max-width: 768px) {
+  .EventFilter_wrp {
+    min-height: 50px;
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .EventFilterBtn {
+    color: white;
+    background: #505050;
+    height: 50%;
+    width: 31%;
+    border-radius: 50px;
+    text-align: center;
+    border: none;
+  }
+}

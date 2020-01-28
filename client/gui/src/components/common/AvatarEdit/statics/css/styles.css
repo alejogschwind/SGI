@@ -1,0 +1,53 @@
+.Avatar_profile {
+  /* display: none; */
+  /* cursor: pointer; */
+  object-fit: cover;
+  width: 70px;
+  height: 70px;
+  background: gray;
+  border-radius: 50%;
+  border: 2px solid whitesmoke;
+}
+.Avatar_border {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.Avatar_border_success {
+  z-index: 15;
+  border: 2px solid greenyellow;
+}
+.Avatar_border_error {
+  z-index: 15;
+  border: 2px solid rgb(248, 71, 71);
+}
+
+.Avatar_2x {
+  height: 100px;
+  width: 100px;
+}
+
+.Avatar_wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+}
+
+.Avatar_loading {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  border: 3px solid;
+  border-radius: 50%;
+  border-color: white transparent white transparent;
+  animation: spin 0.6s forwards infinite;
+}
+
+@keyframes spin {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(180deg)}
+}

@@ -1,0 +1,32 @@
+.Profile {
+  height: 85vh;
+}
+
+.Profile_top {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #8e2d4e;
+
+}
+
+.Info_user {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.Info_user > span {
+  text-align: center;
+}
+
+.Name {
+  font-size: 18px;
+}
+
+.Card_grid {
+  margin-top: -30px;
+  z-index: 6;
+}

@@ -1,0 +1,90 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .EventCard_wrp {
+    width: 90vw;
+    margin: 1rem auto;
+    padding: 15px;
+    height: 170px;
+    border: 0.5px solid #E8E8E8;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .EventCard_info,
+  .EventCard_top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .EventCard_top {
+    height: 25px;
+    align-items: center;
+  }
+
+  .EventCard_info {
+    margin-top: 5%;
+  }
+
+  .EventCard_inscriptions_wrp,
+  .EventCard_info {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .EventCard_type {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    line-height: 20px;
+    color: #404040;
+  }
+
+  .EventCard_btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 0.7px solid #CA0C72;
+    box-sizing: border-box;
+
+    text-align: center;
+    color: #CA0C72;
+  }
+
+  .EventCard_title {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 16px;
+    color: #CA0C72;
+  }
+
+  .EventCard_infotext {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    color: #A8A8A8;
+  }
+  .EventCard_infotext > span {
+    color: #404040;
+    margin: 3px 0;
+  } 
+}
+
+@media only screen and (max-width: 320px) {
+  .EventCard_infotext {
+    font-size: 10px;
+  }
+}

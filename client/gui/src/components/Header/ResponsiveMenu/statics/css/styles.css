@@ -1,0 +1,122 @@
+.Menu_back {
+  position: absolute;
+  top: 13vh;
+  height: 87vh;
+  background: white;
+  width: 100vw;
+  transform: translate(-101vw,0);
+  z-index: 100;
+}
+
+.Menu_display {
+  animation: displayMenu 0s forwards linear;
+  transform: translate(0,0)
+}
+
+.Menu_close {
+  animation-name: closeMenu 1s;
+  transform: translate(-101vw,0);
+
+}
+
+.Menu_top {
+  margin: 0 10vw;
+  display: flex;
+  align-items: center;
+  height: 15%;
+  background: white;
+  border-bottom: 0.2px #ddd solid;
+}
+
+/* .Close_Menu {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: red;
+  width: 20px;
+  height: 20px;
+} */
+
+.Avatar {
+  cursor: pointer;
+  width: 50px;
+  margin-right: 20px;
+  height: 50px;
+  background: gray;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.Account_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.Username {
+  font-weight: bold;
+}
+
+.Menu_center {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+.Menu_links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: chartreuse; */
+  width: 80vw;
+  padding: 30px 0;
+}
+
+.Menu_links > li {
+  cursor: pointer;
+  background: white;
+  width: 200px;
+  height: 25px;
+  text-align: center;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.Menu_bottom {
+  border-top: 0.2px #ddd solid;
+  margin: 0 10vw ;
+  padding: 0 5px;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Notifications {
+  width: 30px;
+  height: 30px;
+  background: coral;
+}
+
+.Vertiacal_div {
+  width: 1px;
+  height: 30px;
+  border-right: 0.4px #ccc solid;
+}
+
+.Log_out {
+  width: 30px;
+  height: 30px;
+  background: coral;
+}
+
+@keyframes displayMenu {
+  from {transform: translate(-101vw,0)}
+  to {transform: translate(0,0)}
+}
+
+@keyframes closeMenu {
+  from {transform: translate(0,0)}
+  to {transform: translate(-101vw,0)}
+}

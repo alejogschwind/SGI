@@ -1,0 +1,44 @@
+.Header_wrp {
+  position: fixed;
+  top: 0;
+  right: 50%;
+  transform: translateX(+50%);
+  z-index: 3;
+  background: white;
+  display: flex;
+  justify-content: center;
+  height: 13vh;
+  width: 100vw;
+  border-bottom: 1px solid rgba(114, 114, 114, .15);
+}
+
+.Logo_wrp {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateLogo 2.5s 1s ease-in-out;
+  transform: rotateY(360deg)
+}
+
+.Hamburger_menu {
+  cursor: pointer;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  right: 7%;
+  transform: translate(-5%, -50%);
+}
+
+.nav-links {
+  background: red;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+}
+
+@keyframes rotateLogo {
+  from {transform: rotateY(0deg)}
+  to {transform: rotateY(359deg)}
+}

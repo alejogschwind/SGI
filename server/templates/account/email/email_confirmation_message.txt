@@ -1,0 +1,12 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hello from {{ site_name }}!
+
+Estas recibiendo este mail porque se ha registrado una cuenta satisfactoriamente 
+para el usuario {{ user_display }} en el Sistema de Gestion Integral (SGI).
+
+Para continuar por favor verifique su cuenta de correo electronico ingresando al siguiente link:
+{{ activate_url }}
+
+{% endblocktrans %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Muchas gracias de {{ site_name }}!
+{{ site_domain }}{% endblocktrans %}
+{% endautoescape %}

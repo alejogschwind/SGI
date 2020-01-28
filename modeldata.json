@@ -1,0 +1,68 @@
+{
+  "user": {
+    "username": "alejo97",
+    "email": "alejogschwind.97@gmail.com",
+    "profile": {
+        "bio": "Lorem Lorem Lorem",
+        "avatar": "",
+        "type": "RDR | P | S",
+        "rotapoints": 0,
+        "participated events": [],
+        "complete_persentage": 90
+    },
+    "personal": {
+      "first_name": "Alejo",
+      "last_name": "Gschwind",
+      "gender": "m",
+      "birthdate": "19/08/97",
+      "passport": "40527438",
+      "phone_number": "5492284217890",
+      "job": "Estudiante de Ingenieria en Sistemas"
+    },
+    "institucional": {
+      "weel": "Rotary | Rotaract | Interact",
+      "airaup_commission": "IT",
+      "airaup_position": "Presidente",
+      "district": "4921",
+      "district_position": "RDR",
+      "club": "Rotaract Club Tandil",
+      "club_position": "Socio"
+    },
+    "location": {
+      "apartment": "5to",
+      "address": "Alberdi 832",
+      "city": "Tandil",
+      "state": "Buenos Aires",
+      "contry": "Argentina",
+      "geo": {
+        "lat": "123321232",
+        "log": "123121223"
+      }
+    },
+    "emergency_contact": {
+      "first_name": "Isabel",
+      "last_name": "Manzanelli",
+      "relation": "Madre",
+      "phone_number": "5492284232890"
+    },
+    "medical": {
+      "health_insurance": "Swiss Medical",
+      "affiliate_number": "1231203019230012",
+      "blood_type": "A+",
+      "allergy": true,
+      "obs_allergy": "Tengo alergia al ...",
+      "special_diet": true,
+      "obs_special_diet": "Mi dieta especial es ...",
+      "periodic_treatment": true,
+      "obs_periodic_treatment": "Me tratamiento peridodico es ..",
+      "physical_limitation": true,
+      "obs_physical_limitation": "Tengo ...",
+      "medication": true,
+      "obs_medication": "Ibuprofeno 600 cada 8 horas",
+      "surgeries": true,
+      "obs_surgeries": "Tengo cirugias de ...",
+      "additional_data": true,
+      "additional_obs": " Tengo otros datos de relevancia "
+    }
+  }
+}

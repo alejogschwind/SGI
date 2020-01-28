@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}Bienvenidos al SGI 2.0!{% endblocktrans %}
+{% endautoescape %}

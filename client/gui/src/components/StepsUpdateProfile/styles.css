@@ -1,0 +1,40 @@
+@media only screen and (max-width: 768px) {
+  .Steps_wrapper {
+    /* background: red; */
+    width: 90vw;
+    margin: 20px 5vw;
+  }
+
+  .Step_content {
+    width: 90vw;
+    margin: 0 5vw;
+  }
+
+  .Form_input {
+    min-width: 90vw;
+  }
+
+  .Form_btn_wrp {
+    min-width: 90vw;
+    
+  }
+  .Form_btn {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .Form_two_btn_wrp {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Form_two_btn_wrp .Form_btn {
+    min-width: 44vw;
+    /* background: red; */
+    margin-bottom: 300px;
+  }
+
+}
+
+.ant-pagination {
+  display: none;
+}

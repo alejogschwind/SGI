@@ -1,0 +1,30 @@
+.Page_title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 15px;
+}
+
+.Personal_avatar_wrp {
+  width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  /* border: 2px dotted #ddd;
+  background: rgb(241, 241, 241); */
+}
+
+.Personal_form_wrp {
+  margin: 0 5vw;
+}
+/* .Personal_avatar_btn {
+  width: 30px;
+  height: 30px;
+  background: #008dff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5%;
+  right: 33%;
+} */

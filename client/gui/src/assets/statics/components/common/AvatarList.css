@@ -1,0 +1,16 @@
+.AvatarList__wrapper {
+  height: 50px;
+}
+.AvatarList__list {
+  list-style: none;
+  margin-left: 15px;
+}
+.AvatarList_avatar {
+  background: rgb(69, 73, 92);
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 0.5px solid white;
+  margin-left: -15px;
+}
