@@ -23,46 +23,47 @@ class SignupForm extends React.Component {
         this.setState({errors: {}, isLoading: true});
         console.log(values)
         this.props.authSignup(values.username, values.email, values.password1, values.password2)
-        .then(
-          () => {
-            this.props.deleteAllFlashMessage()
-            this.props.addFlashMessage({
-              type: 'success',
-              text: 'You signed up successfully! Now you need to confirm your email address. Check your email!'
-            })
-            this.props.history.push('/login');
-          }, //success
-          ({response}) => {
-            this.props.deleteAllFlashMessage()
-            if (response.data.non_field_errors) {
+          .then(
+            () => {
+              this.props.deleteAllFlashMessage()
               this.props.addFlashMessage({
-                type: 'error',
-                text: response.data.non_field_errors
-              });
+                type: 'success',
+                text: 'You signed up successfully! Now you need to confirm your email address. Check your email!'
+              })
+              console.log(this.props.history)
+              this.props.history.push('/login');
+            }, //success
+            ({response}) => {
+              this.props.deleteAllFlashMessage()
+              if (response.data.non_field_errors) {
+                this.props.addFlashMessage({
+                  type: 'error',
+                  text: response.data.non_field_errors
+                });
+              }
+              if (response.data.username) {
+                this.props.addFlashMessage({
+                  type: 'error',
+                  text: response.data.username
+                });
+              }
+              if (response.data.email) {
+                this.props.addFlashMessage({
+                  type: 'error',
+                  text: response.data.email
+                });
+              }
+              if (response.data.password1) {
+                this.props.addFlashMessage({
+                  type: 'error',
+                  text: response.data.password1
+                });
+              }
+              this.setState({isLoading:false})  // rejection
             }
-            if (response.data.username) {
-              this.props.addFlashMessage({
-                type: 'error',
-                text: response.data.username
-              });
-            }
-            if (response.data.email) {
-              this.props.addFlashMessage({
-                type: 'error',
-                text: response.data.email
-              });
-            }
-            if (response.data.password1) {
-              this.props.addFlashMessage({
-                type: 'error',
-                text: response.data.password1
-              });
-            }
-            this.setState({isLoading:false})  // rejection
-          }
-        )
-      }
-    })
+          )
+        }
+      })
   }
 
   handleConfirmBlur = e => {
@@ -92,38 +93,6 @@ class SignupForm extends React.Component {
     const { errors, isLoading } = this.state;
     return (
       <>
-        {/* {errors.non_field_errors && <Alert
-            // message={errors.non_field_errors}
-            description={errors.non_field_errors}
-            type="error"
-            closable
-            onClose={this.onClose}
-            showIcon
-        />}
-        {errors.username && <Alert
-            // message={errors.username}
-            description={errors.username}
-            type="error"
-            closable
-            onClose={this.onClose}
-            showIcon
-        />}
-        {errors.email && <Alert
-            // message={errors.email}
-            description={errors.email}
-            type="error"
-            closable
-            onClose={this.onClose}
-            showIcon
-        />}
-        {errors.password1 && <Alert
-            // message={errors.password1}
-            description={errors.password1}
-            type="error"
-            closable
-            onClose={this.onClose}
-            showIcon
-        />} */}
         <Form onSubmit={this.handleSubmit} className="signup-form">
           <h1>Signup</h1>
 

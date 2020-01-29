@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_HOST } from '../config';
 import * as TYPES from './types';
 
 export function setUserInscriptions(inscriptions) {
@@ -10,13 +11,13 @@ export function setUserInscriptions(inscriptions) {
 
 export function requestInscription(data) {
   return dispatch => {
-    return axios.post(`http://192.168.1.104:8000/inscriptions/`, data);
+    return axios.post(`${API_HOST}/inscriptions/`, data);
   }
 }
 
 export const setInscriptions = () => {
   return dispatch => {
-    axios.get('http://192.168.1.104:8000/inscriptions/')
+    axios.get(`${API_HOST}/inscriptions/`)
       .then(
         (res) => {
           dispatch(setUserInscriptions(res.data));
@@ -31,12 +32,12 @@ export const setInscriptions = () => {
 // Only RDR
 export const getInscriptionsRequests = () => {
   return dispatch => {
-    return axios.get('http://192.168.1.104:8000/adm/inscriptions/')
+    return axios.get(`${API_HOST}/adm/inscriptions/`)
   }
 }
 
 export const requestInscriptionApproved = (id) => {
   return dispatch => {
-    return axios.patch(`http://192.168.1.104:8000/adm/inscriptions/${id}`, {status: 'approved'})
+    return axios.patch(`${API_HOST}/adm/inscriptions/${id}`, {status: 'approved'})
   }
 }

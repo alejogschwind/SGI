@@ -3,6 +3,7 @@ import setAuthoritationToken from '../utils/setAuthorization'
 import { addFlashMessage, deleteAllFlashMessage } from './flashMessages'
 import { setInscriptions } from './inscriptionsActions';
 import * as TYPES from '../actions/types';
+import { API_HOST } from '../config'
 import jwt from 'jsonwebtoken'
 
 export function setCurrentUser(user) {
@@ -57,7 +58,7 @@ export const checkAuthTimeout = expirationDate => {
 
 export const authSetCurrentUser = (token) => {
   return dispatch => {
-    axios.get('http://192.168.1.104:8000/auth/user/', {headers:headers})
+    axios.get(`${API_HOST}/auth/user/`, {headers:headers})
       .then(
         (res) => {
           dispatch(setCurrentUser(res.data));
@@ -74,7 +75,7 @@ const headers = {'Content-Type': 'application/json'}
 export const authLogin = (username, password) => {
   return dispatch => {
     dispatch(authStart());
-    return axios.post('http://192.168.1.104:8000/auth/login/', {username, password}, {headers:headers})
+    return axios.post(`${API_HOST}/auth/login/`, {username, password}, {headers:headers})
       .then(
         (res) => {
           const token = res.data.token;
@@ -98,15 +99,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, email, password1, password2) => {
   return dispatch => {
     dispatch(authStart());
-    axios.post('http://192.168.1.104:8000/auth/registration/', {username, email, password1, password2}, {headers:headers})
-      .then(
-        (res) => {
-          console.log(res.data)
-        }
-      )
-      .catch(err => {
-        dispatch(authFail(err));
-      }) 
+    return axios.post(`${API_HOST}/auth/registration/`, {username, email, password1, password2}, {headers:headers})
   }
 }
 
@@ -132,87 +125,8 @@ export const authCheckState = () => {
   }
 }
 
-
-// export function userSignupRequest(userData) {
-//   return dispatch => {
-//     return axios.post('http://192.168.1.104:8000/auth/registration/', userData, {headers:headers});
-//   }
-// }
-
-// export const userLogoutRequest = () => {
-//   console.log('logout user')
-//   localStorage.removeItem('token');
-//   localStorage.removeItem("expirationDate");
-//   setAuthoritationToken(false);
-//   return dispatch => {
-//     dispatch(setCurrentUser({}))
-//   }
-// }
-
-// export const checkAuthTimeout = expirationTime => {
-//   return dispatch => {
-//     // console.log('time out')
-//     setTimeout(() => {
-//       dispatch(userLogoutRequest());
-//     }, expirationTime * 1000);
-//   };
-// };
-
-// export function userLoginRequest(userData) {
-//   return dispatch => {
-//     return axios.post('http://192.168.1.104:8000/auth/login/', userData, {headers:headers})
-//       .then(
-//         (res) => {
-//           const token = res.data.token;
-//           console.log(res.data.user)
-//           const expirationDate = new Date(new Date().getTime() + 3600 * 1000)
-//           const user = jwt.decode(token)
-//           localStorage.setItem('token',token);
-//           localStorage.setItem('userId',user.user_id);
-//           localStorage.setItem('expirationDate', expirationDate);
-//           setAuthoritationToken(token);
-//           dispatch(checkAuthTimeout(3600));
-//           console.log(res.data.user)
-//           dispatch(setCurrentUser(res.data.user));
-//         }
-//       )
-//   }
-// }
-
 export function userVerifyEmailConfirm(key) {
   return dispatch => {
-    return axios.post(`http://192.168.1.104:8000/account-confirm-email/`, key, {headers:headers});
+    return axios.post(`${API_HOST}/account-confirm-email/`, key, {headers:headers});
   }
 }
-
-// export const authCheckState = () => {
-//   return dispatch => {
-//     console.log('authCheck')
-//     const token = localStorage.getItem("token");
-//     setAuthoritationToken(token);
-//     if (token === undefined) {
-//       console.log('No Token')
-//       dispatch(userLogoutRequest());
-//     } else {
-//       const expirationDate = new Date(localStorage.getItem('expirationDate'));
-//       if (expirationDate <= new Date()) {
-//         console.log('authCheck')
-//         dispatch(userLogoutRequest());
-//       } else {
-//         return axios.get('http://192.168.1.104:8000/auth/user/', {headers:headers})
-//           .then(
-//             (res) => {
-//               console.table(res.data)
-//               dispatch(
-//                 checkAuthTimeout(
-//                   (expirationDate.getTime() - new Date().getTime()) / 1000
-//                 )
-//               );
-//               dispatch(setCurrentUser(res.data));
-//             },
-
-//           )
-//       }
-//     }
-//   }
-// }
