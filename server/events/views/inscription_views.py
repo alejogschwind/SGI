@@ -21,7 +21,12 @@ class InscriptionAdminView(APIView):
 
   def get(self, request):
     if request.user.type == "RDR":
-      inscriptions = Inscription.objects.all()
+      event = request.query_params.get('event', None)
+      # import pdb; pdb.set_trace();
+      if event:
+        inscriptions = Inscription.objects.filter(event__pk=event)
+      else:
+        inscriptions = Inscription.objects.all()
       serializer = InscriptionSerializer(inscriptions, many=True)
       return Response(serializer.data, status=200)
     return Response({'user': "You don't have premissions to preform this action."}, status=401)

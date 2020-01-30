@@ -36,6 +36,12 @@ export const getInscriptionsRequests = () => {
   }
 }
 
+export const getEventIscriptionsAsRDR = (event) => {
+  return dispatch => {
+    return axios.get(`${API_HOST}/adm/inscriptions?event=${event}`)
+  }
+}
+
 export const requestInscriptionApproved = (id) => {
   return dispatch => {
     return axios.patch(`${API_HOST}/adm/inscriptions/${id}`, {status: 'approved'})

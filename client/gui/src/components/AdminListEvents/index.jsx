@@ -38,6 +38,8 @@ class AdminListEvents extends Component {
             console.log(event)
             return (
               <AdminCardEvent
+                key={event.pk}
+                id={event.pk}
                 loading={this.state.loading}
                 title={event.title}
                 public={event.public}

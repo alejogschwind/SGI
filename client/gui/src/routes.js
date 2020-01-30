@@ -17,7 +17,7 @@ import InstitutionalPage from './containers/InstitutionalPage'
 import ContactPage from './containers/ContactPage'
 import ListRequestPage from './containers/ListRequestPage';
 import EventPage from './containers/EventPage';
-import AdminDashboard from './components/AdminLayout';
+import EventRequestsPage from './containers/EventRequestsPage';
 import EventForm from './components/EventForm';
 import AdminPage from './containers/AdminPage';
 
@@ -42,6 +42,7 @@ const Routes = () => {
       
       {/* ADMIN */}
       <Route exact path="/admin" component={requiredAuth(AdminPage)}/>
+      <Route exact path="/admin/request/:id" component={requiredAuth(EventRequestsPage)}/>
       <Route exact path="/admin/create/event" component={EventForm}/>
     </Switch>
   )

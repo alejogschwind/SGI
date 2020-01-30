@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { Card, Icon, Skeleton, Statistic } from 'antd';
 const { Meta } = Card;
@@ -10,7 +11,7 @@ class AdminCardEvent extends Component {
       <Card
         style={{ width: 90 + 'vw', marginTop: 16 }}
         actions={[
-          <Icon type="unordered-list" key="unordered-list" />,
+          <Link to={`admin/request/${this.props.id}`}><Icon type="unordered-list" key="unordered-list" /></Link>,
           <Icon type="edit" key="edit"/>,
           <Icon type="ellipsis" key="ellipsis" />,
         ]}

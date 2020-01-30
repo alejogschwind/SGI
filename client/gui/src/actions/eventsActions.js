@@ -14,9 +14,3 @@ export const getEventsAsRDR = () => {
     return axios.get(`${API_HOST}/adm/events/`)
   }
 }
-
-export const requestInscriptionApproved = (id) => {
-  return dispatch => {
-    return axios.patch(`${API_HOST}/adm/inscriptions/${id}`, {status: 'approved'})
-  }
-}

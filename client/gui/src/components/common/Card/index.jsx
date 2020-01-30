@@ -55,7 +55,7 @@ class Card extends React.Component {
     this.setState({
       loanding: false,
       inscription: this.props.inscription,
-      status: this.props.status
+      status: this.props.inscription.status
     })
   }
 
