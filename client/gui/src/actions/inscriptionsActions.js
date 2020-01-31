@@ -47,3 +47,9 @@ export const requestInscriptionApproved = (id) => {
     return axios.patch(`${API_HOST}/adm/inscriptions/${id}`, {status: 'approved'})
   }
 }
+
+export const requestInscriptionDeny = (id) => {
+  return dispatch => {
+    return axios.patch(`${API_HOST}/adm/inscriptions/${id}`, {status: 'deny'})
+  }
+}

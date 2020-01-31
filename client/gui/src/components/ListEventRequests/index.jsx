@@ -30,7 +30,7 @@ class ListEventRequests extends Component {
     super(props);
     this.state = {
       loanding: true,
-      tab: 'all',
+      tab: 'pending',
       inscriptions: [],
     }
 
@@ -66,7 +66,7 @@ class ListEventRequests extends Component {
     return (
       <>
         <div className="ListEventRequest_filter">
-          <Menu mode="horizontal" defaultSelectedKeys='1' className="RequestFilter_wrp">
+          <Menu mode="horizontal" defaultSelectedKeys={this.state.tab} className="RequestFilter_wrp">
             <SubMenu title="Estado">
               <Menu.Item key="all" onClick={this.handleTabChange}>Todas</Menu.Item>
               <Menu.Item key="approve" onClick={this.handleTabChange}>Aprobadas</Menu.Item>

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { requestInscriptionApproved } from '../../actions/inscriptionsActions'
+import { requestInscriptionApproved, requestInscriptionDeny } from '../../actions/inscriptionsActions'
 
 import { Card, Icon, Skeleton, Badge, Descriptions, Statistic } from 'antd';
 const { Meta } = Card;
@@ -15,6 +15,7 @@ class RequestCard extends Component {
       status: this.props.inscription.status
     }
 
+    this.handleDeny = this.handleDeny.bind(this);
     this.handleApprove = this.handleApprove.bind(this);
   }
 
@@ -24,7 +25,6 @@ class RequestCard extends Component {
       .then(
         (res) => {
           this.props.getData()
-          console.log(res.data)
           this.setState({
             status: 'approved'
           })
@@ -33,7 +33,16 @@ class RequestCard extends Component {
   }
 
   handleDeny() {
-
+    const { pk } = this.props.inscription;
+    this.props.requestInscriptionDeny(pk)
+      .then(
+        (res) => {
+          this.props.getData()
+          this.setState({
+            status: 'deny'
+          })
+        }
+      )
   }
 
   render() {
@@ -56,13 +65,18 @@ class RequestCard extends Component {
         text: 'Cancelada'
       }
     }
+    const actions = []
+    if (this.state.status == 'pending') {
+       actions = [
+        <Icon type="check" key="check" onClick={this.handleApprove}/>,
+        <Icon type="close" key="close" onClick={this.handleDeny}/>,
+      ]
+    }
+
     return (
       <Card
         style={{ width: 90 + 'vw', marginTop: 16}}
-        actions={[
-          <Icon type="check" key="check" onClick={this.handleApprove}/>,
-          <Icon type="close" key="close" onClick={this.handleDeny}/>,
-        ]}
+        actions={actions}
       >
         <Skeleton loading={loading}>
           <Meta
@@ -87,5 +101,6 @@ RequestCard.propTypes = {
 
 
 export default connect(null,{
-  requestInscriptionApproved
+  requestInscriptionApproved,
+  requestInscriptionDeny
 })(RequestCard);
