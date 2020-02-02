@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { requestInscriptionApproved, requestInscriptionDeny } from '../../actions/inscriptionsActions'
 
-import { Card, Icon, Skeleton, Badge, Descriptions, Statistic } from 'antd';
+import { API_HOST } from '../../config'
+import { Card, Avatar, Icon, Skeleton, Badge, Descriptions, Statistic } from 'antd';
+import './statics/css/styles.css';
 const { Meta } = Card;
+
 
 class RequestCard extends Component {
   constructor(props) {
@@ -47,6 +50,9 @@ class RequestCard extends Component {
 
   render() {
     const { inscription, loading } = this.props;
+    const { first_name, last_name } = inscription.user.personal;
+    const { avatar } = inscription.user.profile;
+    const { pk } = inscription.user;
     const STATUS = {
       pending: {
         badge: 'processing',
@@ -65,11 +71,14 @@ class RequestCard extends Component {
         text: 'Cancelada'
       }
     }
-    const actions = []
+    let actions = [
+      <Link to={`/admin/user/${pk}`}><Icon type="profile" key="profile"/></Link>
+    ]
     if (this.state.status == 'pending') {
        actions = [
-        <Icon type="check" key="check" onClick={this.handleApprove}/>,
-        <Icon type="close" key="close" onClick={this.handleDeny}/>,
+        <Icon type="check" key="check" onClick={this.handleApprove} />,
+        <Icon type="close" key="close" onClick={this.handleDeny} />,
+        <Link to={`/admin/user/${pk}`} ><Icon type="profile" key="profile"/></Link>
       ]
     }
 
@@ -78,15 +87,26 @@ class RequestCard extends Component {
         style={{ width: 90 + 'vw', marginTop: 16}}
         actions={actions}
       >
-        <Skeleton loading={loading}>
+        <Skeleton avatar loading={loading}>
           <Meta
             title={inscription.event.title}
             />
           <br/>
-          <Badge status={STATUS[this.state.status].badge} />{STATUS[this.state.status].text}
-          <Descriptions>
-            <Descriptions.Item label="Solicitante">{inscription.user.personal.first_name} {inscription.user.personal.last_name}</Descriptions.Item>
-          </Descriptions>
+          <div className="RequestCard__status_wrp">
+            <span className="RequestCard__label">Estado:</span>
+            <div className="RequestCard_status_data">
+              <Badge status={STATUS[this.state.status].badge} />{STATUS[this.state.status].text}
+            </div>
+          </div>
+          <div className="RequestCard__user_wrp">
+            {/* <p>Solicitante:</p> */}
+            <span className="RequestCard__label">Solicitante:</span>
+            <Link to={`/admin/user/${pk}`} className="RequestCard__user_data">
+              <Avatar src={API_HOST + avatar} />
+              <span className="RequestCard_user_fullname">{first_name + ' ' + last_name}</span>
+            </Link>
+            {/* {inscription.user.personal.first_name} {inscription.user.personal.last_name} */}
+          </div>
           {/* <Statistic title="Inscriptos" value={this.props.inscriptions} suffix={'/ '+ this.props.max_inscriptions} /> */}
         </Skeleton>
       </Card>

@@ -168,9 +168,9 @@ class MedicalForm extends Component {
         </Form.Item>
 
         {this.state.have_special_diet && 
-        <Form.Item label="Información sobre su alergia:">
-          {getFieldDecorator('special_diet_obs', {
-            initialValue: medical.special_diet_obs,
+        <Form.Item label="Seleccione su dieta especial:">
+          {getFieldDecorator('diet_obs', {
+            initialValue: medical.diet_obs,
             rules: [
               {
                 required: this.state.have_special_diet,

@@ -20,6 +20,7 @@ import EventPage from './containers/EventPage';
 import EventRequestsPage from './containers/EventRequestsPage';
 import EventForm from './components/EventForm';
 import AdminPage from './containers/AdminPage';
+import UserDataPage from './containers/UserDataPage';
 
 const Routes = () => {
   return (
@@ -43,6 +44,7 @@ const Routes = () => {
       {/* ADMIN */}
       <Route exact path="/admin" component={requiredAuth(AdminPage)}/>
       <Route exact path="/admin/request/:id" component={requiredAuth(EventRequestsPage)}/>
+      <Route exact path="/admin/user/:id" component={requiredAuth(UserDataPage)}/>
       <Route exact path="/admin/create/event" component={EventForm}/>
     </Switch>
   )

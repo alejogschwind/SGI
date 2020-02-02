@@ -12,8 +12,7 @@ class AdminCardEvent extends Component {
         style={{ width: 90 + 'vw', marginTop: 16 }}
         actions={[
           <Link to={`admin/request/${this.props.id}`}><Icon type="unordered-list" key="unordered-list" /></Link>,
-          <Icon type="edit" key="edit"/>,
-          <Icon type="ellipsis" key="ellipsis" />,
+          <Icon type="edit" key="edit"/>
         ]}
       >
         <Skeleton loading={this.props.loading}>

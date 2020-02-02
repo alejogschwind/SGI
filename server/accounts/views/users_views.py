@@ -1,24 +1,20 @@
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from django.shortcuts import get_object_or_404
+from accounts.models import User
+from accounts.serializers import UserDetailsSerializer
 
 
-# class UserDetailsView(RetrieveUpdateAPIView):
-#     """
-#     Reads and updates UserModel fields
-#     Accepts GET, PUT, PATCH methods.
-#     Default accepted fields: username, first_name, last_name
-#     Default display fields: pk, username, email, first_name, last_name
-#     Read-only fields: pk, email
-#     Returns UserModel fields.
-#     """
-#     serializer_class = UserDetailsSerializer
-#     permission_classes = (IsAuthenticated,)
+class UserDetailRDRView(APIView):
 
-#     def get_object(self):
-#         return self.request.user
+  def get(self, request, pk=None):
+    if request.user.type == 'RDR':
+      instance = get_object_or_404(User, pk=pk)
+      serializer = UserDetailsSerializer(instance)
+      return Response(serializer.data, status=200)
+    return Response({'user': "You don't have premissions to preform this action."}, status=401)
+ 
 
-#     def get_queryset(self):
-#         """
-#         Adding this method since it is sometimes called when using
-#         django-rest-swagger
-#         https://github.com/Tivix/django-rest-auth/issues/275
-#         """
-#         return get_user_model().objects.none()

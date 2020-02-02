@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getEventIscriptionsAsRDR } from '../../actions/inscriptionsActions';
 
-import { Menu } from 'antd';
+import { Menu, Empty } from 'antd';
 
 import RequestCard from '../RequestCard';
 import RequestFilter from './RequestFilter';
@@ -30,7 +30,7 @@ class ListEventRequests extends Component {
     super(props);
     this.state = {
       loanding: true,
-      tab: 'pending',
+      tab: 'all',
       inscriptions: [],
     }
 
@@ -63,6 +63,8 @@ class ListEventRequests extends Component {
   render() {
     const { SubMenu } = Menu;
     const { tab, inscriptions } = this.state;
+
+    const inscriptionsFitered = inscriptions.filter(filterStatus(tab));
     return (
       <>
         <div className="ListEventRequest_filter">
@@ -71,13 +73,13 @@ class ListEventRequests extends Component {
               <Menu.Item key="all" onClick={this.handleTabChange}>Todas</Menu.Item>
               <Menu.Item key="approve" onClick={this.handleTabChange}>Aprobadas</Menu.Item>
               <Menu.Item key="pending" onClick={this.handleTabChange}>Pendientes</Menu.Item>
-              <Menu.Item key="deny" onClick={this.handleTabChange}>Denegados</Menu.Item>
+              <Menu.Item key="deny" onClick={this.handleTabChange}>Rechazadas</Menu.Item>
             </SubMenu>
           </Menu>
         </div>
         <section className="ListEventRequests__wrp">
-          { 
-            inscriptions.filter(filterStatus(tab)).map((i) => (
+          { inscriptionsFitered.length != 0 ?
+            inscriptionsFitered.map((i) => (
               <RequestCard
                 key={i.pk}
                 loanding={this.props.loanding}
@@ -85,6 +87,13 @@ class ListEventRequests extends Component {
                 getData={this.getData}
               />
             ))
+            :
+            <div className="ListEventRequest_msg">
+              <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description="No hay solicitudes con estas caracteristicas."
+              />
+            </div>
           }
         </section>
       </>
