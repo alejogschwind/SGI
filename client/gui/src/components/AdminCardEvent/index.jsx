@@ -9,7 +9,8 @@ class AdminCardEvent extends Component {
   render() {
     return (
       <Card
-        style={{ width: 90 + 'vw', marginTop: 16 }}
+        style={{ width: 90 + 'vw', marginBottom: 16
+       }}
         actions={[
           <Link to={`admin/request/${this.props.id}`}><Icon type="unordered-list" key="unordered-list" /></Link>,
           <Icon type="edit" key="edit"/>

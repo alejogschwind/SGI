@@ -8,6 +8,11 @@
   align-items: center;
 }
 
-.RequestFilter_wrp {
+.ListEventRequest__filter_wrp {
   width: 90vw;
+  margin: 10px auto;
+}
+
+.ListEventRequest__dropdown {
+  width: 100px;
 }

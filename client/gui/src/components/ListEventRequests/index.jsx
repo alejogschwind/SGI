@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getEventIscriptionsAsRDR } from '../../actions/inscriptionsActions';
 
-import { Menu, Empty } from 'antd';
+import { Menu, Empty, PageHeader, Button, Dropdown, Icon } from 'antd';
 
 import RequestCard from '../RequestCard';
 import RequestFilter from './RequestFilter';
@@ -36,6 +36,7 @@ class ListEventRequests extends Component {
 
     this.getData = this.getData.bind(this)
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
   getData() {
@@ -60,23 +61,53 @@ class ListEventRequests extends Component {
     this.setState({tab: e.key})
   }
 
+  handleMenuClick(e) {
+    this.setState({tab: e.key})
+  }
+
   render() {
     const { SubMenu } = Menu;
     const { tab, inscriptions } = this.state;
+    const menu = (
+      <Menu onClick={this.handleMenuClick}>
+        <Menu.Item key="all">
+          {/* <Icon type="user" /> */}
+          Todas
+        </Menu.Item>
+        <Menu.Item key="approve">
+          {/* <Icon type="user" /> */}
+          Aprobadas
+        </Menu.Item>
+        <Menu.Item key="pending">
+          {/* <Icon type="user" /> */}
+          Pendientes
+        </Menu.Item>
+        <Menu.Item key="deny">
+          {/* <Icon type="user" /> */}
+          Rechazadas
+        </Menu.Item>
+      </Menu>
+    );
 
     const inscriptionsFitered = inscriptions.filter(filterStatus(tab));
     return (
       <>
-        <div className="ListEventRequest_filter">
-          <Menu mode="horizontal" defaultSelectedKeys={this.state.tab} className="RequestFilter_wrp">
-            <SubMenu title="Estado">
-              <Menu.Item key="all" onClick={this.handleTabChange}>Todas</Menu.Item>
-              <Menu.Item key="approve" onClick={this.handleTabChange}>Aprobadas</Menu.Item>
-              <Menu.Item key="pending" onClick={this.handleTabChange}>Pendientes</Menu.Item>
-              <Menu.Item key="deny" onClick={this.handleTabChange}>Rechazadas</Menu.Item>
-            </SubMenu>
-          </Menu>
+        <PageHeader
+            style={{
+              border: '1px solid rgb(235, 237, 240)',
+            }}
+            onBack={() => window.history.back()}
+            title="Solicitudes"
+        />
+
+        <div className="ListEventRequest__filter_wrp">
+          <Dropdown className="ListEventRequest__dropdown" trigger="click" overlay={menu}>
+            <Button size="large">
+              Estado <Icon type="down" />
+            </Button>
+          </Dropdown>
         </div>
+
         <section className="ListEventRequests__wrp">
           { inscriptionsFitered.length != 0 ?
             inscriptionsFitered.map((i) => (

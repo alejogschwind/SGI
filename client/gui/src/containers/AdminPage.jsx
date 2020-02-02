@@ -7,13 +7,14 @@ import Card from '../components/common/Card'
 import AdminListEvents from '../components/AdminListEvents';
 
 class AdminPage extends Component {
-  
 
   render() {
     console.log(this.state)
     return (
       <Layout>
-        <h2></h2>
+
+        <br />
+
         <AdminListEvents
 
         />

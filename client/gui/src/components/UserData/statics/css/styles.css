@@ -6,3 +6,11 @@
   flex-direction: column;
   align-items: center; */
 }
+
+.UserData__filter_wrp {
+  margin: 15px auto;
+}
+
+.UserData_dropdown {
+
+}
