@@ -88,7 +88,7 @@ class UserData extends Component {
         <section className="UserData_wrp">
           
           <div className="UserData__filter_wrp">
-            <Dropdown className="UserData__dropdown" trigger="click" overlay={menu}>
+            <Dropdown className="UserData__dropdown" trigger={["click"]} overlay={menu}>
               <Button size="large">
                 Datos <Icon type="down" />
               </Button>

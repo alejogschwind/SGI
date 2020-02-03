@@ -24,18 +24,15 @@ class AdminListEvents extends Component {
             loading: false,
             events: res.data
           })
-          console.log(res.data)
         }
       )
   }
-
 
   render() {
     return (
       <section className="AdminListEvents_wrp">
         {
           this.state.events.map(event => {
-            console.log(event)
             return (
               <AdminCardEvent
                 key={event.pk}
@@ -55,11 +52,9 @@ class AdminListEvents extends Component {
   }
 }
 
-
 AdminListEvents.propTypes = {
-  
+  getEventsAsRDR: PropTypes.func.isRequired
 };
-
 
 export default connect(null, {
   getEventsAsRDR

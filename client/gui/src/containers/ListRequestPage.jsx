@@ -10,7 +10,6 @@ class ListRequestPage extends Component {
     super(props);
   }
   
-  // TO DO: Buscar una manera de hacer menos request al servidor.
   componentDidMount() {
     this.props.setInscriptions()
   }
@@ -27,7 +26,7 @@ class ListRequestPage extends Component {
                   first_name={element.user.personal.first_name}
                   last_name={element.user.personal.last_name}
                   avatar={element.user.profile.avatar}
-                  event={element.event.title}
+                  event_title={element.event.title}
                   status={element.status}
                 />
               )
@@ -42,12 +41,13 @@ class ListRequestPage extends Component {
 
 
 ListRequestPage.propTypes = {
-  
+  loading: PropTypes.bool.isRequired,
+  inscriptions: PropTypes.object.isRequired,
+  setInscriptions: PropTypes.func.isRequired,
 };
 
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     loading: state.auth.loading,
     inscriptions: state.inscriptions

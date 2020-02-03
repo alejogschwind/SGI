@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
+import { API_HOST } from '../../../config';
 
 import {Badge, Avatar, Card } from 'antd';
 const { Meta } = Card;
@@ -24,17 +25,17 @@ class RequestCard extends Component {
         text: 'Solicitud cancelada'
       }
     }
-    const { first_name, last_name, avatar, status, event} = this.props;
+    const { first_name, last_name, avatar, status, event_title} = this.props;
     return (
       <div>
         <Card style={{ width: '90vw', marginTop: 16 }}>
           <Meta
             avatar={
-              <Avatar src={'http://192.168.1.104:8000' + avatar} />
+              <Avatar src={API_HOST + avatar} />
             }
             title={first_name + ' ' + last_name}
           />
-          <p>{event}</p>
+          <p>{event_title}</p>
           <Badge status={STATUS[status].badge} />
           {STATUS[status].text}
         </Card>
@@ -43,11 +44,12 @@ class RequestCard extends Component {
   }
 }
 
-
 RequestCard.propTypes = {
-  
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  event_title: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
 };
-
-
 
 export default RequestCard;

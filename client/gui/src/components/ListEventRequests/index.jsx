@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { getEventIscriptionsAsRDR } from '../../actions/inscriptionsActions';
 
 import { Menu, Empty, PageHeader, Button, Dropdown, Icon } from 'antd';
 
 import RequestCard from '../RequestCard';
-import RequestFilter from './RequestFilter';
 import './statics/css/styles.css'
 
 function filterStatus(tab) {
@@ -35,7 +33,6 @@ class ListEventRequests extends Component {
     }
 
     this.getData = this.getData.bind(this)
-    this.handleTabChange = this.handleTabChange.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
@@ -55,10 +52,6 @@ class ListEventRequests extends Component {
 
   componentDidMount() {
     this.getData();
-  }
-
-  handleTabChange(e) {
-    this.setState({tab: e.key})
   }
 
   handleMenuClick(e) {
@@ -101,7 +94,11 @@ class ListEventRequests extends Component {
         />
 
         <div className="ListEventRequest__filter_wrp">
-          <Dropdown className="ListEventRequest__dropdown" trigger="click" overlay={menu}>
+          <Dropdown
+            className="ListEventRequest__dropdown"
+            trigger={["click"]}
+            overlay={menu}
+          >
             <Button size="large">
               Estado <Icon type="down" />
             </Button>
@@ -133,7 +130,8 @@ class ListEventRequests extends Component {
 }
 
 ListEventRequests.propTypes = {
-  
+  event: PropTypes.string.isRequired,
+  getEventIscriptionsAsRDR: PropTypes.func.isRequired,
 };
 
 export default connect(null, {

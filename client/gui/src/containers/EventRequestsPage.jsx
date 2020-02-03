@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Layout from './Layout';
 
 import ListEventRequests from '../components/ListEventRequests'
@@ -15,9 +14,5 @@ class EventRequestsPage extends Component {
     );
   }
 }
-
-EventRequestsPage.propTypes = {
-  
-};
 
 export default EventRequestsPage;

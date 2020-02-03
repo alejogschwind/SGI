@@ -6,7 +6,6 @@ import { authCheckState } from '../actions/authActions'
 import Header from '../components/Header'
 import ResponsiveMenu from '../components/Header/ResponsiveMenu'
 
-
 class Layout extends Component {
   constructor(props) {
     super(props)
@@ -41,6 +40,7 @@ class Layout extends Component {
                 last_name={this.props.auth.user.personal.last_name ? this.props.auth.user.personal.last_name : null}
                 avatar={this.props.auth.user.profile.avatar ? this.props.auth.user.profile.avatar : null}
                 open={this.state.menu}
+                is_RDR={this.props.auth.user.type === 'RDR'}
                 toggleMenu={this.toggleMenu}
               />
             </Header>
@@ -54,9 +54,10 @@ class Layout extends Component {
   }
 }
 
-
 Layout.propTypes = {
-  
+  loading: PropTypes.bool.isRequired,
+  auth: PropTypes.object.isRequired,
+  authCheckState: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
