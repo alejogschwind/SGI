@@ -1,0 +1,18 @@
+.ListEventRequest_filter {
+  display: flex;
+  justify-content: center;
+}
+.ListEventRequests__wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ListEventRequest__filter_wrp {
+  width: 90vw;
+  margin: 10px auto;
+}
+
+.ListEventRequest__dropdown {
+  width: 100px;
+}

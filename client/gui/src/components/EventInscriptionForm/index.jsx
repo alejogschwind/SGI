@@ -34,7 +34,6 @@ class EventInscriptionForm extends React.Component {
     api.endpoints.events.getOne({ id })
       .then(
         (res) => {
-          console.log(res.data)
           this.setState({ loading: false, event: res.data })
         }
       )

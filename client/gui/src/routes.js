@@ -17,10 +17,10 @@ import InstitutionalPage from './containers/InstitutionalPage'
 import ContactPage from './containers/ContactPage'
 import ListRequestPage from './containers/ListRequestPage';
 import EventPage from './containers/EventPage';
-import AdminDashboard from './components/AdminLayout';
+import EventRequestsPage from './containers/EventRequestsPage';
 import EventForm from './components/EventForm';
-import ListEvents from './components/ListEvents';
 import AdminPage from './containers/AdminPage';
+import UserDataPage from './containers/UserDataPage';
 
 const Routes = () => {
   return (
@@ -43,7 +43,8 @@ const Routes = () => {
       
       {/* ADMIN */}
       <Route exact path="/admin" component={requiredAuth(AdminPage)}/>
-      <Route exact path="/admin/events" component={ListEvents}/>
+      <Route exact path="/admin/request/:id" component={requiredAuth(EventRequestsPage)}/>
+      <Route exact path="/admin/user/:id" component={requiredAuth(UserDataPage)}/>
       <Route exact path="/admin/create/event" component={EventForm}/>
     </Switch>
   )

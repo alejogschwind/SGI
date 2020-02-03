@@ -1,17 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getEvents } from '../actions/eventsActions'
 
-import FlashMessagesList from '../components/FlashMessagesList';
 import '../assets/statics/containers/Home.css';
 
-// ANTD
 import EventFilter from '../components/EventCardList/EventFilter'
-import Header from '../components/Header';
 import EventCardList from '../components/EventCardList';
-import ResponsiveMenu from '../components/Header/ResponsiveMenu';
-import MenuBtn from '../components/Header/MenuBtn';
 import Layout from './Layout';
-
-import axios from 'axios';
 
 
 class Home extends React.Component {
@@ -32,7 +27,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://192.168.1.104:8000/events/')
+    this.props.getEvents()
       .then(
         (res) => {
           this.setState({loading: false})
@@ -60,4 +55,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(null, { getEvents })(Home);

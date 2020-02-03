@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './statics/css/styles.css'
 
 function ResponsiveMenu(props) {
-  const { avatar, first_name, last_name, open, toggleMenu } = props;
+  const { avatar, first_name, last_name, open, toggleMenu, is_RDR } = props;
   return (
     <div className={open ? "Menu_back Menu_display": "Menu_back Menu_close"}>
       <div className="Menu_top">
@@ -22,8 +22,8 @@ function ResponsiveMenu(props) {
           <li><Link to="/" onClick={toggleMenu}>Eventos</Link></li>
           <li><Link to="/profile" onClick={toggleMenu}>Perfil</Link></li>
           <li><Link to="/requests" onClick={toggleMenu}>Solicitudes</Link></li>
-          <li><Link to="/admin" onClick={toggleMenu}>Administración</Link></li>
-          <li><Link to="/config" onClick={toggleMenu}>Settings</Link></li>
+          { is_RDR && <li><Link to="/admin" onClick={toggleMenu}>Administración</Link></li>}
+          {/* <li><Link to="/config" onClick={toggleMenu}>Settings</Link></li> */}
         </ul>
       </div>
       <div className="Menu_bottom">

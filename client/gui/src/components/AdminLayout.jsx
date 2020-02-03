@@ -1,7 +1,6 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import AdminMenu from './AdminMenu'
-import ListEvents from './ListEvents'
 import EventForm from './EventForm'
 
 import { Route, Switch } from 'react-router-dom'

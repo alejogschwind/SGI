@@ -21,7 +21,11 @@ class InscriptionAdminView(APIView):
 
   def get(self, request):
     if request.user.type == "RDR":
-      inscriptions = Inscription.objects.all()
+      event = request.query_params.get('event', None)
+      if event:
+        inscriptions = Inscription.objects.filter(event__pk=event)
+      else:
+        inscriptions = Inscription.objects.all()
       serializer = InscriptionSerializer(inscriptions, many=True)
       return Response(serializer.data, status=200)
     return Response({'user': "You don't have premissions to preform this action."}, status=401)
@@ -37,10 +41,16 @@ class InscriptionDetailUpdateAdminView(APIView):
 
   def patch(self, request, id=None):
     if request.user.type == 'RDR':
-      instance = get_object_or_404(Inscription, pk=id)
       data = request.data
-      # Change this TODO!!!
-      data.pop('event', None)
+      instance = get_object_or_404(Inscription, pk=id)
+      if instance.status != 'pending':
+        return Response({"error": "Given inscription was allredy approved or deny."}, status=400)
+      # Add inscription to counter.
+      event = get_object_or_404(Event, pk=instance.event.pk)
+      if (data['status'] == 'deny'):
+        event.inscriptions -= 1
+        event.save()
+
       serializer = InscriptionCreateSerializer(instance, data, partial=True)
       if serializer.is_valid(raise_exception=True):
         serializer.save()
@@ -64,9 +74,7 @@ class InscriptionView(APIView):
       # Ckeck if user is not allready inscript to event
       inscription = Inscription.objects.filter(user=request.user.id, event=data['event'])
       if inscription:
-
         return Response({'user': 'User already send the inscription request.'}, status=400)
-      # Add inscription to counter.
       event = get_object_or_404(Event, pk=data['event'])
       serializer.save()
       event.inscriptions += 1

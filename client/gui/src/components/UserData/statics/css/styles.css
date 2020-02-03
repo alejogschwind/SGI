@@ -1,0 +1,16 @@
+.UserData_wrp {
+  width: 90vw;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+.UserData__filter_wrp {
+  margin: 15px auto;
+}
+
+.UserData_dropdown {
+
+}
